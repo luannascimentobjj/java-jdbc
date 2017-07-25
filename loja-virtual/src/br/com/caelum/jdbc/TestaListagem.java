@@ -8,8 +8,11 @@ import java.sql.Statement;
 public class TestaListagem {
 
 	public static void main(String[] args) throws SQLException {
+		ConnectionPool database = new ConnectionPool();
 		
-		Connection connection = Database.getConnection();
+		
+		for(int i = 0; i < 100; i++) {
+		Connection connection = database.getConnection();
 		
 		Statement statemant = connection.createStatement();
 		boolean resultado = statemant.execute("Select * from Produto");
@@ -26,6 +29,7 @@ public class TestaListagem {
 		statemant.close();
 		connection.close();
 				
+		}
 	}
 
 
